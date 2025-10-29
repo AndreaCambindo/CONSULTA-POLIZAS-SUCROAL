@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consulta ARESS</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-logos">
+      <div class="logos-izq">
+        <img src="./sucroal.webp" alt="Logo 3">
+      </div>
+      <h1>CONSULTA PÓLIZAS SUCROAL</h1>
+      <div class="logo-der">
+        <img src="./aress.jpeg" alt="Logo 4">
+      </div>
+    </div>
+  </header>
+
+  <main>
+<div class="top-bar">
+  <button id="btnIndicadores" class="btn-indicadores">📊 Indicadores</button>
+</div>
+
+    <div class="busqueda-bar">
+      <input id="identificacion" type="text" placeholder="Ingrese Identificación o No. contrato" />
+      <button id="btnConsultar" class="btn-consultar">Consultar</button>
+    </div>
+
+    <div id="resumen"></div>
+
+    <div class="tabla-container">
+      <table id="tablaResultados">
+        <thead>
+          <tr>
+            <th>No. De OM / Contrato</th>
+            <th>Pedido</th>
+            <th>Identificación</th>
+            <th>Cliente</th>
+            <th>Tipo Compra</th>
+            <th>Comprador responsable</th>
+            <th>Pago</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modal Detalle -->
+  <div id="modalDetalle" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Detalles del contrato</h2>
+        <span id="modalClose" class="modal-close">&times;</span>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button id="btnDescargarCSV" class="btn-export">📑 Descargar CSV</button>
+        <button id="btnDescargarPDF" class="btn-export">🗒️ Descargar PDF</button>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Dashboard de Indicadores -->
+<div id="modalIndicadores" class="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content" style="max-width:1000px;">
+    <div class="modal-header">
+      <h2>Indicadores Generales</h2>
+      <span id="modalIndicadoresClose" class="modal-close">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <div class="dashboard-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; justify-items:center;">
+
+        <div class="dashboard-item" style="text-align:center;">
+          <canvas id="graficoExpedidos" width="180" height="90"></canvas>
+          <div class="dashboard-label">✅ Expedidas</div>
+          <div id="labelExpedidos"></div>
+        </div>
+
+        <div class="dashboard-item" style="text-align:center;">
+          <canvas id="graficoEnExpedicion" width="180" height="90"></canvas>
+          <div class="dashboard-label">⏳ En expedición</div>
+          <div id="labelEnExpedicion"></div>
+        </div>
+
+        <div class="dashboard-item" style="text-align:center;">
+          <canvas id="graficoSinExpedir" width="180" height="90"></canvas>
+          <div class="dashboard-label">❌ Sin expedir</div>
+          <div id="labelSinExpedir"></div>
+        </div>
+
+        <div class="dashboard-item" style="text-align:center;">
+          <canvas id="graficoPagados" width="180" height="90"></canvas>
+          <div class="dashboard-label">💰 Pagados</div>
+          <div id="labelPagados"></div>
+        </div>
+
+        <div class="dashboard-item" style="text-align:center;">
+          <canvas id="graficoNoPagados" width="180" height="90"></canvas>
+          <div class="dashboard-label">🚫 No Pagados</div>
+          <div id="labelNoPagados"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-export" onclick="document.getElementById('modalIndicadores').classList.remove('show')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

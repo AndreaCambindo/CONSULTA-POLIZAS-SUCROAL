@@ -1,0 +1,369 @@
+/* ---------- Reset básico ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #0058a3 0%, #e9f2fa 100%);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ---------- Header blanco con logos ---------- */
+header {
+  background: #fff;
+  color: #0058a3;
+  padding: 0 2rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+  border-bottom: 8px solid rgba(0, 88, 163, 0.2);
+}
+
+.header-logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logos-izq,
+.logo-der {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logos-izq img {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo-der img {
+  height: 88px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.header-logos img:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- Título centrado ---------- */
+header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ---------- Layout principal ---------- */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* ---------- Top Bar ---------- */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.btn-indicadores {
+  background: linear-gradient(to right, #0058a3, #5a9bd5);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-indicadores:hover {
+  background: linear-gradient(to right, #004377, #4a89c0);
+}
+
+/* ---------- Barra de búsqueda ---------- */
+.busqueda-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.busqueda-bar input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-consultar {
+  background: #0058a3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-consultar:hover {
+  background: #004377;
+}
+
+/* ---------- Resumen ---------- */
+.resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.resumen .item {
+  background: #fff;
+  flex: 1;
+  min-width: 120px;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.resumen .item:hover {
+  background: #f0f8ff;
+  transform: translateY(-4px);
+}
+
+.resumen .numero {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.resumen .etiqueta {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ---------- Tabla ---------- */
+.tabla-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background: #0058a3;
+  color: #fff;
+}
+
+thead th {
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+tbody tr {
+  transition: background 0.2s;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+tbody tr:hover {
+  background: #eef6ff;
+}
+
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tbody td:last-child {
+  cursor: pointer;
+  color: #0058a3;
+  font-weight: 500;
+}
+
+.icono-pago {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* ---------- Modales ---------- */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  max-width: 600px;
+  width: 90%;
+  margin: 4rem auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.modal-header,
+.modal-footer {
+  padding: 1rem;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-footer {
+  border-top: 1px solid #ececec;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.modal-body {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-export {
+  background: #0316a7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-export:hover {
+  background: #487fff;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.dashboard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-item canvas {
+  width: 180px !important;
+  height: 90px !important;
+}
+
+.dashboard-label {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 700px) {
+  .header-logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logos-izq img {
+    height: 50px;
+  }
+
+  .logo-der img {
+    height: 42px;
+  }
+
+  header h1 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .busqueda-bar {
+    flex-direction: column;
+  }
+
+  .busqueda-bar input,
+  .btn-consultar {
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+  }
+}
