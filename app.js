@@ -136,7 +136,6 @@ function renderTabla(lista) {
 
     const campos = [
       primera["No. De OM / Contrato"] || "Sin OM asignado",
-      primera["Pedido"] || "",
       primera["Identificación"] || "",
       primera["Cliente"] || "",
       primera["Tipo Compra"] || "",
@@ -147,7 +146,6 @@ function renderTabla(lista) {
 
     const labels = [
       "No. De OM / Contrato",
-      "Pedido",
       "Identificación",
       "Cliente",
       "Tipo Compra",
@@ -159,13 +157,13 @@ function renderTabla(lista) {
     campos.forEach((v, idx) => {
       const td = document.createElement("td");
       td.textContent = v;
-      if (idx === 6) {
+      if (idx === 5) {
         td.classList.add("icono-pago");
         if (v === "✅") td.style.color = "green";
         else if (v === "⚠️") td.style.color = "#d88f00";
         else td.style.color = "red";
       }
-      if (idx === 7) {
+      if (idx === 6) {
         td.style.cursor = "pointer";
         td.addEventListener("click", () => abrirModalDetalle(filas));
       }
